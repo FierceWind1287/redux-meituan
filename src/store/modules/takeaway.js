@@ -5,16 +5,20 @@ import axios from "axios"
 const foodsStore = createSlice({
   name: 'foods',
   initialState: {
-    foodsList: []
+    foodsList: [],
+    activeIndex: 0
   },
   reducers: {
     setFoodsList(state, action) {
       state.foodsList = action.payload
+    },
+    changeActiveIndex(state, action) {
+      state.activeIndex = action.payload
     }
   }
 })
 
-const { setFoodsList } = foodsStore.actions
+const { setFoodsList, changeActiveIndex } = foodsStore.actions
 const reducer = foodsStore.reducer
 
 const fetchFoodsList = () => {
@@ -24,5 +28,5 @@ const fetchFoodsList = () => {
   }
 }
 
-export { fetchFoodsList }
+export { fetchFoodsList, changeActiveIndex }
 export default reducer

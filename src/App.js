@@ -4,7 +4,7 @@ import Cart from './components/Cart'
 import FoodsCategory from './components/FoodsCategory'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchFoodsList } from './store/modules/takeaway'
+import { fetchFoodsList, changeActiveIndex } from './store/modules/takeaway'
 import './App.scss'
 
 // const foodsList = [
@@ -71,7 +71,7 @@ const App = () => {
     dispatch(fetchFoodsList())
   }, [dispatch])
 
-  const { foodsList } = useSelector(state => state.foods)
+  const { foodsList, activeIndex } = useSelector(state => state.foods)
   return (
     <div className="home">
       {/* 导航 */}
@@ -85,9 +85,9 @@ const App = () => {
           <div className="list-content">
             <div className="goods-list">
               {/* 外卖商品列表 */}
-              {foodsList.map(item => {
+              {foodsList.map((item, index) => {
                 return (
-                  <FoodsCategory
+                  activeIndex === index && < FoodsCategory
                     key={item.tag}
                     // 列表标题
                     name={item.name}

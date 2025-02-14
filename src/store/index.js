@@ -1,4 +1,4 @@
-import foodsReducer from './modules/takeaway'
+import  foodsReducer  from './modules/takeaway'
 import { configureStore } from '@reduxjs/toolkit'
 
 const store = configureStore({
