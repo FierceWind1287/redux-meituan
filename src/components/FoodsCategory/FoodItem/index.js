@@ -1,4 +1,6 @@
 import './index.scss'
+import { useDispatch } from 'react-redux'
+import { addCart } from '../../../store/modules/takeaway'
 
 const Foods = ({
   id,
@@ -11,10 +13,11 @@ const Foods = ({
   like_ratio_desc,
   price,
   tag,
-  count
+  count = 1
 }) => {
-
+  const dispatch = useDispatch()
   return (
+
     <dd className="cate-goods">
       <div className="goods-img-wrap">
         <img src={picture} alt="" className="goods-img" />
@@ -38,7 +41,19 @@ const Foods = ({
             {price}
           </div>
           <div className="goods-count">
-            <span className="plus"></span>
+            <span className="plus" onClick={() => dispatch(addCart({
+              id,
+              picture,
+              name,
+              unit,
+              description,
+              food_tag_list,
+              month_saled,
+              like_ratio_desc,
+              price,
+              tag,
+              count
+            }))}>+</span>
           </div>
         </div>
       </div>
